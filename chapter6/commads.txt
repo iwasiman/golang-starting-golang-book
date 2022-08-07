@@ -1,0 +1,33 @@
+> go // これだけでもヘルプが出てくる
+> go version
+go version go1.18 windows/amd64
+> go env
+> go fmt [パッケージ名]
+> go doc [パッケージ]
+> go doc [パッケージ]/[パッケージ].[定数や関数]
+> go build
+> go build -o app.exe main.go
+> go build foo
+> go install [パッケージ名]
+
+$GOPATH
+ bin/ // ビルドしてできた実行ファイルの格納先
+ pkg/ //ビルドしたパッケージのインストール先
+ src/
+   installedpkg/ // go installでソースコードの格納先
+   foo/ //ほかのパッケージ
+   sample_project1/ // プロジェクトのパッケージとか...
+
+> go get [オプションやパッケージ名など]
+
+> go test ./foo
+> cd foo
+> go test
+> cd ..
+> go test ./...
+
+テストのディレクトリ構成
+app_root/
+  foo/ // package foo
+    foo.go
+    foo_test.go
