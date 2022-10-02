@@ -29,21 +29,22 @@ func someFunc2(a int) (b string) {
 }
 
 func etc() {
-	for {
-		fmt.Println("無限ループだニャン")
-	}
-	// 伝統的なループ
-	for i := 0; i < 10; i++ {
-		if i == 9 {
-			break // breakも他言語と同じ。continueはネストのひとつ外側へ
-		}
-	}
+	// for {
+	// 	fmt.Println("無限ループだニャン")
+	// }
+	// // 伝統的なループ
+	// for i := 0; i < 10; i++ {
+	// 	if i == 9 {
+	// 		break // breakも他言語と同じ。continueはネストのひとつ外側へ
+	// 	}
+	// }
+
 	// fruits := [2]{"banana", "cherry"}
 	// for i, name := range fruits {
 	// 	// インデックスがi、nameにi番目の文字列が入る
 	// }
 	x := false
-	if x == 1 {
+	if x == true {
 		// 真の時の処理
 	}
 
@@ -79,13 +80,15 @@ func etc() {
 		// ひとつのswitch文で定数と式の両方があるとエラー。
 	}
 
-	// なんでも入るinterface{}型なので、xはint型ではない
-	var x interface{} = 3.14
-	i, isInt := x.(int)         //iは3、isIntはfalse
-	f, isFloat64 := x.(float64) // iは3.14、isFloat64はtrue
+	// なんでも入るinterface{}型なので、x1はint型ではない
+	var x1 interface{} = 3.14
+	i, isInt := x1.(int) //iは3、isIntはfalse
+	fmt.Println(i, isInt)
+	f, isFloat64 := x1.(float64) // fは3.14、isFloat64はtrue
+	fmt.Println(f, isFloat64)
 
 	// switchで分岐できる。この時typeは変数名でなく予約語で参照できない
-	switch x.(type) {
+	switch x1.(type) {
 	case bool:
 		fmt.Println("xは論理型", x)
 	case int, uint:
@@ -103,6 +106,11 @@ func deferSample() {
 	// 関数のメイン処理
 }
 
+func doSomething() (string, error) {
+	fmt.Println("aaa")
+	return "", nil
+}
+
 func main2() {
 	defer func() { // Javaなどのfinally的な処理
 		if x := recover(); x != nil {
@@ -112,7 +120,7 @@ func main2() {
 	}()
 
 	panic("パニック発生！") // 文字列以外にもinterface{}型でいろいろ渡せる
-	fmt.Println("ここのメイン処理は実行されない")
+	//fmt.Println("ここのメイン処理は実行されない")
 }
 
 func main3() {
@@ -120,6 +128,10 @@ func main3() {
 	for {
 		//メインの無限ループ
 	}
+}
+
+func sub() {
+
 }
 
 // 実行すると両方のループが並行してGO！
